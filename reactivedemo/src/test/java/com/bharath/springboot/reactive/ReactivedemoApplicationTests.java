@@ -86,7 +86,7 @@ class ReactivedemoApplicationTests {
 					@Override
 					public void onSubscribe(Subscription subscription) {
 						this.subscription = subscription;
-						subscription.request(3);
+						subscription.request(2);
 					}
 
 					@Override

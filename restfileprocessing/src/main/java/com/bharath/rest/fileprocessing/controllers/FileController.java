@@ -23,13 +23,13 @@ public class FileController {
 	private String UPLOAD_DIR;
 
 	@PostMapping("/upload")
-	public boolean upload(@RequestParam MultipartFile file) throws IllegalStateException, IOException {
+	public boolean upload(@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
 		file.transferTo(new File(UPLOAD_DIR + file.getOriginalFilename()));
 		return true;
 	}
 	
 	@GetMapping("/download/{fileName}")
-	public ResponseEntity<byte[]> download(@PathVariable String fileName) throws IOException{
+	public ResponseEntity<byte[]> download(@PathVariable("fileName") String fileName) throws IOException{
 		byte[] fileData = Files.readAllBytes(new File(UPLOAD_DIR+fileName).toPath());
 		
 		HttpHeaders headers = new HttpHeaders();
@@ -40,3 +40,14 @@ public class FileController {
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
